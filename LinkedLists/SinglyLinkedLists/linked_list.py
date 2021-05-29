@@ -50,24 +50,25 @@ class LinkedList:
 		prev_node.next = new_node # change a next pointer of prev node
 
 	#Delete methods
-	def delete_node(self,key):
-		'''deletes a node from a list by its key
-		'''
-		current_node = self.head 
-		#if we want to delete node that is a head node
-		if current_node and current_node.data == key: #if the list isn't empty and current_node is that what we seek
-			self.head = current_node.next #change the head of list
-			current_node = None #removes this node from list
-			return
-		prev_node = None #if node to be deleted is not head
-		while current_node and current_node != key:#iterate over list while current_node isn't None and its data isn't key
-			prev_node = current_node
-			current_node = current_node.next # move the head pointer along
-		if current_node is None: #this means that our element isn't present on the list
-			return 
+	def delete_node(self, key):
 
-		prev_node.next = current_node.next
-		current_node = None #delete this node
+        cur_node = self.head
+
+        if cur_node and cur_node.data == key:
+            self.head = cur_node.next
+            cur_node = None
+            return
+
+        prev = None 
+        while cur_node and cur_node.data != key:
+            prev = cur_node
+            cur_node = cur_node.next
+
+        if cur_node is None:
+            return 
+
+        prev.next = cur_node.next
+        cur_node = None
 
 
 llist = LinkedList()
