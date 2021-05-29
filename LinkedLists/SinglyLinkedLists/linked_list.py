@@ -37,7 +37,7 @@ class LinkedList:
 		self.head = new_node #change the head of the list 
 
 	def insert_after_node(self, prev_node, data):
-		'''insert a new node after given node
+		'''inserts a new node after given node
 		'''
 		if not prev_node:
 			print('Previous node is not on the list')
@@ -49,6 +49,27 @@ class LinkedList:
 
 		prev_node.next = new_node # change a next pointer of prev node
 
+	#Delete methods
+	def delete_node(self,key):
+		'''deletes a node from a list by its key
+		'''
+		current_node = self.head 
+		#if we want to delete node that is a head node
+		if current_node and current_node.data == key: #if the list isn't empty and current_node is that what we seek
+			self.head = current_node.next #change the head of list
+			current_node = None #removes this node from list
+			return
+		prev_node = None #if node to be deleted is not head
+		while current_node and current_node != key:#iterate over list while current_node isn't None and its data isn't key
+			prev_node = current_node
+			current_node = current_node.next # move the head pointer along
+		if current_node is None: #this means that our element isn't present on the list
+			return 
+
+		prev_node.next = current_node.next
+		current_node = None #delete this node
+
+
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
@@ -56,6 +77,11 @@ llist.append('C')
 llist.append('D')
 llist.print_list()
 llist.prepend('E')
+print('*')
 llist.print_list()
 llist.insert_after_node(llist.head.next,'F') # insert "F" node after 'A' node
+print('*')
+llist.print_list()
+print('*')
+llist.delete_node('A')
 llist.print_list()
