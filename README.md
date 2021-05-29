@@ -8,3 +8,5 @@ this is the link to playlist with lessons that I've used https://www.youtube.com
 file stack.py contains a Stack class 
 
 file parenthesis.py contains a function that uses Stack in order to solve the problem with brackets
+
+file convert.py contains a function that converts a decimal integer to binary using a Stack data structure
