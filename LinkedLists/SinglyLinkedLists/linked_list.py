@@ -60,7 +60,7 @@ class LinkedList:
 			current_node = None #removes this node from list
 			return
 		prev_node = None #if node to be deleted is not head
-		while current_node and current_node != key:#iterate over list while current_node isn't None and its data isn't key
+		while current_node and current_node.data != key:#iterate over list while current_node isn't None and its data isn't key
 			prev_node = current_node
 			current_node = current_node.next # move the head pointer along
 		if current_node is None: #this means that our element isn't present on the list
