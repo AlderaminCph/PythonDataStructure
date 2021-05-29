@@ -12,11 +12,11 @@ class Stack():
 		return self.items.pop() #will return the top element of the stack
 
 	def is_empty(self):
-		return self.items == []
+		return self.items == [] # will check if the stack is empty
 
 	def peek(self):
-		if not self.is_empty():
+		if not self.is_empty(): # will return the top element of the stack
 			return self.items[-1]
 
-	def get_stack(self):
+	def get_stack(self): #will return the stack
 		return self.items
