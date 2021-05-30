@@ -292,10 +292,42 @@ class LinkedList:
         else:
             return self.count_occurances_recursivly(node.next, data)
 
-llist = LinkedList()
-llist.append('A')
-llist.append('B')
-llist.append('A')
-llist.append('A')
+    def rotate(self, k):
+        # 1->2->3->4->5->6->none
+        #          p     q
+        # k = 4
+        # 5 -> 6 -> 1 -> 2 -> 3 -> 4 -> None
+        #pnext q ->head->          p -> None
 
-print(llist.count_occurances_recursivly(llist.head,'A'))
+        p = self.head
+        q = self.head
+
+        count = 0
+        prev_node = None
+
+        while p and count < k:
+            prev_node = p
+            p = p.next
+            q = q.next
+            count += 1
+        p = prev_node
+
+        while q:
+            prev_node = q
+            q = q.next
+        q = prev_node
+        q.next = self.head
+        self.head = p.next
+        p.next = None
+
+llist = LinkedList()
+llist.append('1')
+llist.append('2')
+llist.append('3')
+llist.append('4')
+llist.append('5')
+llist.append('6')
+llist.print_list()
+print('\n')
+llist.rotate(4)
+llist.print_list()
