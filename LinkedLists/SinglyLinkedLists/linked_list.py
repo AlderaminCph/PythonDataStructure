@@ -320,7 +320,7 @@ class LinkedList:
         self.head = p.next
         p.next = None
 
-    def is_pailndrome_1(self):
+    def is_palindrome_1(self):
         '''Example palindromes:
         RACECAR, RADAR
         Example Non-palindromes:
@@ -336,6 +336,23 @@ class LinkedList:
             p = p.next
         return s == s[::-1]
 
+    def is_palindrome_2(self):
+        '''determines whether or not the singly linked list is palindrome
+        '''
+        # Method 2, using stack
+
+        p = self.head
+        s = [] #our stack
+
+        while p:
+            s.append(p.data)
+            p = p.next
+        while p:
+            data = s.pop()
+            if p.data != data:
+                return False
+            p = p.next
+        return True 
 
 llist = LinkedList()
 llist.append('R')
@@ -345,4 +362,4 @@ llist.append('A')
 llist.append('R')
 llist.print_list()
 print('\n')
-print(llist.is_pailndrome_1())
+print(llist.is_palindrome_2())
