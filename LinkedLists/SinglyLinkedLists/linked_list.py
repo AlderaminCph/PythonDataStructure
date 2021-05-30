@@ -132,7 +132,7 @@ class LinkedList:
         # case1: Neither of them are not a head node. This means that they have previous nodes.
 
         if prev_1: #if node1 has previous node => it's not a head node
-            prev_1 = curr_2
+            prev_1.next = curr_2
         else: #node1 is the head node
             self.head = curr_2
 
@@ -163,6 +163,6 @@ llist.print_list()
 # llist.print_list()
 # print('list length',llist.len_iterative())
 # print('list length recursively',llist.len_recursive(llist.head))
-print('swapping nodes B,C')
-llist.swap_nodes('B','C')
+print('swapping nodes A,C')
+llist.swap_nodes('A','C')
 llist.print_list()
