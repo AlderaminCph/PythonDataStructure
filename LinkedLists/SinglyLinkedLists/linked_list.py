@@ -90,6 +90,16 @@ class LinkedList:
         prev_node.next = current_node.next
         current_node = None # deletes node
 
+    def len_iterative(self):
+        '''returns the length of the list
+        '''
+        count = 0
+        current_node = self.head
+        while current_node: #while current node is valid
+            count += 1
+            current_node = current_node.next
+        return count
+
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
@@ -108,3 +118,4 @@ llist.print_list()
 llist.delete_node_at_pos(1)
 print('*')
 llist.print_list()
+print('list length',llist.len_iterative())
