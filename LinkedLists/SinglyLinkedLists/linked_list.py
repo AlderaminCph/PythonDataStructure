@@ -405,7 +405,7 @@ class LinkedList:
             if q:
                 q = q.next
         sum_list.print_list()
-
+'''
 # 3 6 5 
 #   4 2 
 # ------
@@ -422,3 +422,4 @@ llist2.append(2)
 
 print(365 + 248)
 llist1.sum_two_lists(llist2)
+'''
