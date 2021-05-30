@@ -236,31 +236,26 @@ class LinkedList:
                 dupl_values[current_node.data] =1
                 prev_node = current_node
             current_node = prev_node.next
-llist_1 = LinkedList()
-llist_2 = LinkedList()
 
-llist_1.append(1)
-llist_1.append(5)
-llist_1.append(7)
-llist_1.append(9)
-llist_1.append(10)
+    def print_nth_from_last(self,n):
 
-llist_2.append(2)
-llist_2.append(3)
-llist_2.append(4)
-llist_2.append(6)
-llist_2.append(8)
+        # Method 1:
 
-llist_1.merge_sorted(llist_2)
-llist_1.print_list()
+        total_length = self.len_iterative()
+        current_node = self.head
 
+        while current_node:
+            if total_length == n:
+                print(current_node.data)
+                return current_node
+            total_length -= 1
+            current_node = current_node.next
+            if current_node is None:
+                return
 llist = LinkedList()
-llist.append(1)
-llist.append(2)
-llist.append(2)
-llist.append(3)
-print('delete duplicates')
-llist.print_list()
-llist.remove_duplicates()
-print('\n')
-llist.print_list()
+llist.append('A')
+llist.append('B')
+llist.append('C')
+llist.append('D')
+
+llist.print_nth_from_last(2)
