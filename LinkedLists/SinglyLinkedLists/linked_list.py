@@ -237,7 +237,7 @@ class LinkedList:
                 prev_node = current_node
             current_node = prev_node.next
 
-    def print_nth_from_last(self,n):
+    def print_nth_from_last_1(self,n):
 
         # Method 1:
 
@@ -252,10 +252,31 @@ class LinkedList:
             current_node = current_node.next
             if current_node is None:
                 return
+
+    def print_nth_from_last2(self,n):
+
+        # Method 2:
+
+        p = self.head
+        q = self.head
+
+        count = 0
+
+        while q and count < n:
+            q = q.next
+            count += 1
+        if not q:
+            print(str(n) + ' is greater than the number of nodes in list')
+
+        while p and q:
+            p = p.next
+            q = q.next
+        return p.data
+
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
 llist.append('C')
 llist.append('D')
 
-llist.print_nth_from_last(2)
+print(llist.print_nth_from_last2(2))
