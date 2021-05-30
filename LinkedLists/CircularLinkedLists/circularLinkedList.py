@@ -33,7 +33,7 @@ class CircularLinkedList:
 		if not self.head: # our list is empty
 			new_node.next = new_node
 		else: # our list is not empty
-			while current_node != self.head:
+			while current_node.next != self.head:
 				current_node = current_node.next
 			current_node.next = new_node
 		self.head = new_node
