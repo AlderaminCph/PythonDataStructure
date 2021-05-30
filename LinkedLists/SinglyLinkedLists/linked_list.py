@@ -273,10 +273,29 @@ class LinkedList:
             q = q.next
         return p.data
 
+    def count_occurances_iterative(self, data):
+        # 1->2->1->3->4->1->1
+        # Number of ones is 4
+        current_node = self.head
+        count = 0
+        while current_node:
+            if current_node.data == data:
+                count+=1
+            current_node = current_node.next
+        return count
+
+    def count_occurances_recursivly(self, node, data):
+        if not node:
+            return 0
+        if node.data == data:
+            return 1 + self.count_occurances_recursivly(node.next, data)
+        else:
+            return self.count_occurances_recursivly(node.next, data)
+
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
-llist.append('C')
-llist.append('D')
+llist.append('A')
+llist.append('A')
 
-print(llist.print_nth_from_last2(2))
+print(llist.count_occurances_recursivly(llist.head,'A'))
