@@ -347,6 +347,7 @@ class LinkedList:
         while p:
             s.append(p.data)
             p = p.next
+        p = p.head # make p back to the head of the list
         while p:
             data = s.pop()
             if p.data != data:
