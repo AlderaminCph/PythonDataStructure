@@ -112,6 +112,40 @@ class CircularLinkedList:
         print('\n')
         split_cllist.print_list()
 
+    def remove_node(self,node):
+        ''' removes a node 
+        '''
+        if self.head == node: # if we want to delete the head node
+            current_node = self.head
+            while current_node.next != self.head:
+                current_node = current_node.next
+            current_node.next = self.head.next
+            self.head = self.head.next
+        else: # if we want to delete a random node
+            current_node = self.head
+            prev_node = None
+            while current_node.next != self.head:
+                prev_node = current_node
+                current_node = current_node.next
+                if current_node == node:
+                    prev_node.next = current_node.next
+                    current_node = current_node.next    
+
+    def josephus_circle(self, step):
+        ''' solves the Josephus problem 
+        '''
+        current_node = self.head
+
+        while len(self) > 1:
+            count = 1
+            while count != step:
+                current_node = current_node.next
+                count += 1
+            print('REMOVED '+str(current_node.data))
+            self.remove_node(current_node)
+            current_node = current_node.next
+
+
 
 
 cllist = CircularLinkedList()
@@ -120,7 +154,8 @@ cllist.append('D')
 cllist.prepend('B')
 cllist.prepend('A')
 cllist.print_list()
+cllist.josephus_circle(2)
 print('\n')
-cllist.split_list()
+cllist.print_list()
 
 
