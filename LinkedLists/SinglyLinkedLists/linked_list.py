@@ -320,14 +320,29 @@ class LinkedList:
         self.head = p.next
         p.next = None
 
+    def is_pailndrome_1(self):
+        '''Example palindromes:
+        RACECAR, RADAR
+        Example Non-palindromes:
+        TEST, ABC. HELLO
+        '''
+        # Method 1
+
+        s = ""
+        p = self.head
+
+        while p:
+            s += p.data
+            p = p.next
+        return s == s[::-1]
+
+
 llist = LinkedList()
-llist.append('1')
-llist.append('2')
-llist.append('3')
-llist.append('4')
-llist.append('5')
-llist.append('6')
+llist.append('R')
+llist.append('A')
+llist.append('D')
+llist.append('A')
+llist.append('R')
 llist.print_list()
 print('\n')
-llist.rotate(4)
-llist.print_list()
+print(llist.is_pailndrome_1())
