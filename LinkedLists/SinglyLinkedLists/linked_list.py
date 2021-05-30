@@ -69,7 +69,37 @@ class LinkedList:
 
         prev.next = cur_node.next
         cur_node = None
+    #swap by changing the next attribute of node
+    def swap_nodes(self, key_1, key_2):
+        if key_1 == key_2:
+            return 
 
+        prev_1 = None 
+        curr_1 = self.head 
+        while curr_1 and curr_1.data != key_1:
+            prev_1 = curr_1 
+            curr_1 = curr_1.next
+
+        prev_2 = None 
+        curr_2 = self.head 
+        while curr_2 and curr_2.data != key_2:
+            prev_2 = curr_2 
+            curr_2 = curr_2.next
+
+        if not curr_1 or not curr_2:
+            return 
+
+        if prev_1:
+            prev_1.next = curr_2
+        else:
+            self.head = curr_2
+
+        if prev_2:
+            prev_2.next = curr_1
+        else:
+            self.head = curr_1
+
+        curr_1.next, curr_2.next = curr_2.next, curr_1.next
 
 llist = LinkedList()
 llist.append('A')
@@ -77,12 +107,14 @@ llist.append('B')
 llist.append('C')
 llist.append('D')
 llist.print_list()
-llist.prepend('E')
-print('*')
-llist.print_list()
-llist.insert_after_node(llist.head.next,'F') # insert "F" node after 'A' node
-print('*')
-llist.print_list()
-print('*')
-llist.delete_node('A')
+# llist.prepend('E')
+# print('*')
+# llist.print_list()
+# llist.insert_after_node(llist.head.next,'F') # insert "F" node after 'A' node
+# print('*')
+# llist.print_list()
+# print('*')
+# llist.delete_node('A')
+print('swaping nodes B,C')
+llist.swap_nodes('B','C')
 llist.print_list()
