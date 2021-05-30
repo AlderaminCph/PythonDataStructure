@@ -143,6 +143,34 @@ class LinkedList:
 
         curr_1.next,curr_2.next = curr_2.next,curr_1.next #swapping them
 
+    def print_helper(self,node,name):
+        if node is None:
+            print(name + ': None')
+        else:
+            print(name + ': ' + node.data)
+
+    #reverse list
+    # A->B->C->D->0
+    # D->C->B->A->0
+    # A<-B<-C<-D<-0
+
+    def reverse_iterative(self):
+        prev_node = None
+        current_node = self.head
+
+        while  current_node:
+            nxt = current_node.next #temporary variable with pointer to the next node
+            current_node.next = prev_node
+            
+            self.print_helper(prev_node,'PREV')
+            self.print_helper(current_node,'CURR')
+            self.print_helper(nxt,'NEXT')
+            print('\n')
+
+            prev_node = current_node
+            current_node = nxt
+
+        self.head = prev_node
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
@@ -165,4 +193,8 @@ llist.print_list()
 # print('list length recursively',llist.len_recursive(llist.head))
 print('swapping nodes A,C')
 llist.swap_nodes('A','C')
+llist.print_list()
+print('reverse list')
+llist.reverse_iterative()
+print('*')
 llist.print_list()
