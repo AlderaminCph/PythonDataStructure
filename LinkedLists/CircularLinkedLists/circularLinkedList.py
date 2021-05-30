@@ -145,17 +145,36 @@ class CircularLinkedList:
             self.remove_node(current_node)
             current_node = current_node.next
 
+    def is_circular_linked_list(self, input_list):
+        ''' checks whether or not the input list is a circular linked list
+        '''
 
+        current_node = input_list.head
 
+        while current_node.next:
+            current_node = current_node.next
+            if current_node.next == input_list.head:
+                return True
+        return False
 
+import sys  
+sys.path.append("/home/nastya/MyGitRepository/PythonDataStructure/LinkedLists/SinglyLinkedLists")  
+from linked_list import LinkedList  
+
+llist = LinkedList()
+llist.append('C')
+llist.append('D')
+llist.prepend('B')
+llist.prepend('A')
+llist.print_list()
+print('\n')
 cllist = CircularLinkedList()
 cllist.append('C')
 cllist.append('D')
 cllist.prepend('B')
 cllist.prepend('A')
 cllist.print_list()
-cllist.josephus_circle(2)
-print('\n')
-cllist.print_list()
+print(cllist.is_circular_linked_list(cllist))
+print(cllist.is_circular_linked_list(llist))
 
 
