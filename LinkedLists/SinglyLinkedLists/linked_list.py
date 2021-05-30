@@ -99,6 +99,13 @@ class LinkedList:
             count += 1
             current_node = current_node.next
         return count
+    
+    def len_recursive(self,node):
+        '''calculate the list length recursively
+        '''
+        if node is None:
+            return 0
+        return 1 + self.len_recursive(node.next)
 
 llist = LinkedList()
 llist.append('A')
@@ -119,3 +126,4 @@ llist.delete_node_at_pos(1)
 print('*')
 llist.print_list()
 print('list length',llist.len_iterative())
+print('list length recursively',llist.len_recursive(llist.head))
