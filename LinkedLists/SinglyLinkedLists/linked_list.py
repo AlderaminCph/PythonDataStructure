@@ -171,6 +171,19 @@ class LinkedList:
             current_node = nxt
 
         self.head = prev_node
+
+    def reverse_recursive(self):
+
+        def _reverse_recursive(current_node,prev_node):
+            if not current_node: #if we rich the end of the list
+                return prev_node
+            nxt = current_node.next
+            current_node.next = prev_node
+            prev_node = current_node
+            current_node = nxt
+            return _reverse_recursive(current_node,prev_node)
+        self.head = _reverse_recursive(current_node = self.head,prev_node = None)
+
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
@@ -197,4 +210,7 @@ llist.print_list()
 print('reverse list')
 llist.reverse_iterative()
 print('*')
+llist.print_list()
+print('reverse recursively')
+llist.reverse_recursive()
 llist.print_list()
