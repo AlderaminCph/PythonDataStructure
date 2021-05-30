@@ -10,7 +10,7 @@ class CircularLinkedList:
         self.head = None
 
     def append(self, data):
-        ''' appends a new node to the and of the list
+        ''' appends a new node to the end of the list
         '''
         if not self.head: #our list is empty
             self.head = Node(data)
@@ -68,12 +68,59 @@ class CircularLinkedList:
                     prev_node.next = current_node.next
                     current_node = current_node.next
 
+    def __len__(self):
+        ''' returns the length of our list
+        '''
+        current_node = self.head
+        count = 0
+        while current_node:
+            count += 1
+            current_node = current_node.next
+            if current_node == self.head:
+                break
+        return count
+
+    def split_list(self):
+        ''' splits list in two half lists
+        '''
+        size = len(self)
+
+        if size == 0: #empty list
+            return None
+        if size == 1: #list contains single node
+            return self.head
+
+        mid = size // 2 #general case
+        count = 0
+
+        prev_node = None
+        current_node = self.head
+
+        while current_node and count < mid: #first half of list
+            count += 1
+            prev_node = current_node
+            current_node = current_node.next
+        prev_node.next = self.head
+
+        split_cllist = CircularLinkedList()
+        while current_node.next != self.head:
+            split_cllist.append(current_node.data)
+            current_node = current_node.next
+        split_cllist.append(current_node.data)
+
+        self.print_list()
+        print('\n')
+        split_cllist.print_list()
+
+
+
 cllist = CircularLinkedList()
 cllist.append('C')
 cllist.append('D')
 cllist.prepend('B')
 cllist.prepend('A')
-cllist.remove('B')
 cllist.print_list()
+print('\n')
+cllist.split_list()
 
 
