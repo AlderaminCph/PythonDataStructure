@@ -355,6 +355,21 @@ class LinkedList:
             p = p.next
         return True 
 
+    def move_tail_to_head(self):
+        '''
+        A -> B -> C -> D -> None
+        D -> A -> B -> C -> None
+        '''
+        last = self.head # pointer to the last element
+        second_to_the_last = self.head # pointer to the second to the last element
+
+        while last.next:
+            second_to_the_last = last
+            last = last.next
+        last.next = self.head
+        second_to_the_last.next = None
+        self.head = last
+
 llist = LinkedList()
 llist.append('R')
 llist.append('A')
@@ -363,4 +378,5 @@ llist.append('A')
 llist.append('R')
 llist.print_list()
 print('\n')
-print(llist.is_palindrome_2())
+llist.move_tail_to_head()
+llist.print_list()
